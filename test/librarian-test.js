@@ -2,8 +2,6 @@ var assert = require("chai").assert;
 var Librarian = require('../src/Librarian.js');
 var createLibrary = require('../src/library.js').createLibrary;
 var addBook = require('../src/library.js').addBook;
-var checkoutBook = require('../src/library.js').checkoutBook;
-var searchShelf = require('../src/shelf.js').searchShelf;
 
 describe('Librarian (class)', function() {
   it('should instantiate a librarian object', function() {
@@ -69,8 +67,14 @@ describe('Librarian (class)', function() {
   it("should say if requested book is not found", function() {
     var library = createLibrary("Aurora Public Library");
     var librarian = new Librarian("Casey", library);
+
     var book = { title: "The Fifth Season", genre: "fantasy" }
     addBook(librarian.library, book);
+
+    var book = { title: 'The Fifth Season', genre: 'fantasy' }
+
+    addBook(librarian.library, book);
+
     var bookConfirmation = librarian.findBook("Five Brief Lessons in Physics");
     assert.equal(bookConfirmation, "Sorry, we do not have Five Brief Lessons in Physics");
   });

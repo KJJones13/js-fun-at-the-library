@@ -1,6 +1,7 @@
 var addBook = require("../src/Library.js").addBook;
 var assert = require("chai").assert;
 var createLibrary = require("../src/library.js").createLibrary;
+var addBook = require("../src/library.js").addBook;
 var checkoutBook = require("../src/library.js").checkoutBook;
 
 describe("library.js", function() {
@@ -51,7 +52,11 @@ describe("library.js", function() {
       assert.equal(denverLibrary.shelves.fantasy[0], dracula);
     });
 
+
     it('should add books to the correct shelves automatically', function() {
+
+    it.skip("should add books to the correct shelves automatically", function() {
+
       var denverLibrary = createLibrary("Denver Public Library");
       var dracula = {
         title: "Dracula",
@@ -83,7 +88,11 @@ describe("library.js", function() {
   });
 
   describe("checkoutBook", function() {
+
     it('should unshelf a book to check out a book to a patron', function() {
+
+    it.skip("should unshelf a book to check out a book to a patron", function() {
+
       var dracula = {
         title: "Dracula",
         mainCharacter: { name: "Count Dracula", age: undefined, pronouns: "he/him" },
@@ -114,7 +123,11 @@ describe("library.js", function() {
       assert.equal(result, "You have now checked out Pride and Prejudice from the Denver Public Library")
     });
 
+
     it('should only checkout a book if the book is on the shelves', function() {
+   
+    it.skip("should only checkout a book if the book is on the shelves", function() {
+
       var denverLibrary = createLibrary("Denver Public Library");
 
       var error = checkoutBook(denverLibrary, "The Fifth Season");

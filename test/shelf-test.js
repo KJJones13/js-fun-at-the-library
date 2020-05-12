@@ -15,14 +15,15 @@ describe("shelf.js", function() {
         title: "Hyperion",
         mainCharacter: { name: "The Shrike", age: null, pronouns: "they" },
         pageCount: 482,
-        genre: "scifi"
+        genre: "sciFi"
       };
       var dune = {
         title: "Dune",
         mainCharacter: { name: "Paul", age: 15, pronouns: "he/him" },
         pageCount: 421,
-        genre: "scifi"
+        genre: "sciFi"
       };
+
       var scifiShelf = [];
 
       shelfBook(hyperion, scifiShelf);
@@ -33,24 +34,37 @@ describe("shelf.js", function() {
     });
 
     it('should add another book to the shelf', function() {
+
+      var sciFiShelf = [];
+  
+      shelfBook(hyperion, sciFiShelf);
+      shelfBook(dune, sciFiShelf);
+  
+      assert.equal(sciFiShelf[0], dune);
+      assert.equal(sciFiShelf[1], hyperion);
+    });
+  
+    it.skip("should add another book to the shelf", function() {
+
       var hyperion = {
         title: "Hyperion",
         mainCharacter: { name: "The Shrike", age: null, pronouns: "they" },
         pageCount: 482,
-        genre: "scifi"
+        genre: "sciFi"
       };
       var dune = {
         title: "Dune",
         mainCharacter: { name: "Paul", age: 15, pronouns: "he/him" },
         pageCount: 421,
-        genre: "scifi"
+        genre: "sciFi"
       };
-      var endersgame = {
+      var endersGame = {
         title: "Ender's Game",
         mainCharacter: { name: "Andrew 'Ender' Wiggin", age: 10, pronouns: "he/him" },
         pageCount: 324,
-        genre: "scifi"
+        genre: "sciFi"
       };
+
       var scifiShelf = [hyperion];
 
       shelfBook(endersgame, scifiShelf);
@@ -59,6 +73,16 @@ describe("shelf.js", function() {
       assert.equal(scifiShelf[0], dune);
       assert.equal(scifiShelf[1], endersgame);
       assert.equal(scifiShelf[2], hyperion);
+
+      var sciFiShelf = [hyperion];
+  
+      shelfBook(endersGame, sciFiShelf);
+      shelfBook(dune, sciFiShelf);
+  
+      assert.equal(sciFiShelf[0], dune);
+      assert.equal(sciFiShelf[1], endersGame);
+      assert.equal(sciFiShelf[2], hyperion);
+
     });
 
     it("shelves can only hold a certain amount of books", function () {
@@ -66,70 +90,87 @@ describe("shelf.js", function() {
         title: "Hyperion",
         mainCharacter: { name: "The Shrike", age: null, pronouns: "they" },
         pageCount: 482,
-        genre: "scifi"
+        genre: "sciFi"
       };
       var dune = {
         title: "Dune",
         mainCharacter: { name: "Paul", age: 15, pronouns: "he/him" },
         pageCount: 421,
-        genre: "scifi"
+        genre: "sciFi"
       };
-      var endersgame = {
+      var endersGame = {
         title: "Ender's Game",
         mainCharacter: { name: "Andrew 'Ender' Wiggin", age: 10, pronouns: "he/him" },
         pageCount: 324,
-        genre: "scifi"
+        genre: "sciFi"
       };
-      var caseysbook = {
+      var caseysBook = {
         title: "The Robot Kitty",
         mainCharacter: { name: "Coda", age: 15, pronouns: "he/him" },
         pageCount: 201,
-        genre: "scifi"
+        genre: "sciFi"
       };
-      var scifiShelf = [hyperion, dune];
+      var sciFiShelf = [hyperion, dune];
 
-      shelfBook(endersgame, scifiShelf);
+      shelfBook(endersGame, sciFiShelf);
 
-      assert.equal(scifiShelf.length, 3);
-      assert.deepEqual(scifiShelf, [endersgame, hyperion, dune]);
+      assert.equal(sciFiShelf.length, 3);
+      assert.deepEqual(sciFiShelf, [endersGame, hyperion, dune]);
 
-      shelfBook(caseysbook, scifiShelf);
+      shelfBook(caseysBook, sciFiShelf);
 
-      assert.equal(scifiShelf.length, 3);
-      assert.deepEqual(scifiShelf, [endersgame, hyperion, dune]);
+      assert.equal(sciFiShelf.length, 3);
+      assert.deepEqual(sciFiShelf, [endersGame, hyperion, dune]);
     });
   });
 
   describe("unshelfBook", function() {
+
     it('should be a function', function() {
       assert.isFunction(unshelfBook);
     });
 
     it('should remove a book by name', function() {
+
+    it.skip("should be a function", function() {
+      assert.isFunction(unshelfBook);
+    });
+  
+    it.skip("should remove a book by name", function() {
+
       var hyperion = {
         title: "Hyperion",
         mainCharacter: { name: "The Shrike", age: null, pronouns: "they" },
         pageCount: 482,
-        genre: "scifi"
+        genre: "sciFi"
       };
       var dune = {
         title: "Dune",
         mainCharacter: { name: "Paul", age: 15, pronouns: "he/him" },
         pageCount: 421,
-        genre: "scifi"
+        genre: "sciFi"
       };
-      var endersgame = {
+      var endersGame = {
         title: "Ender's Game",
         mainCharacter: { name: "Andrew 'Ender' Wiggin", age: 10, pronouns: "he/him" },
         pageCount: 324,
-        genre: "scifi"
+        genre: "sciFi"
       };
+
       var scifiShelf = [hyperion, dune, endersgame];
 
       unshelfBook("Dune", scifiShelf);
 
       assert.equal(scifiShelf.length, 2);
       assert.deepEqual(scifiShelf, [hyperion, endersgame]);
+
+      var sciFiShelf = [hyperion, dune, endersGame];
+  
+      unshelfBook("Dune", sciFiShelf);
+      
+      assert.equal(sciFiShelf.length, 2);
+      assert.deepEqual(sciFiShelf, [hyperion, endersGame]);
+
     });
   });
 
@@ -143,21 +184,21 @@ describe("shelf.js", function() {
         title: "Hyperion",
         mainCharacter: { name: "The Shrike", age: null, pronouns: "they" },
         pageCount: 482,
-        genre: "scifi"
+        genre: "sciFi"
       };
       var dune = {
         title: "Dune",
         mainCharacter: { name: "Paul", age: 15, pronouns: "he/him" },
         pageCount: 421,
-        genre: "scifi"
+        genre: "sciFi"
       };
-      var endersgame = {
+      var endersGame = {
         title: "Ender's Game",
         mainCharacter: { name: "Andrew 'Ender' Wiggin", age: 10, pronouns: "he/him" },
         pageCount: 324,
-        genre: "scifi"
+        genre: "sciFi"
       };
-      var fantasyShelf = [hyperion, dune, endersgame];
+      var fantasyShelf = [hyperion, dune, endersGame];
 
       var titles = listTitles(fantasyShelf);
 
@@ -171,18 +212,18 @@ describe("shelf.js", function() {
         title: "Hyperion",
         mainCharacter: { name: "The Shrike", age: null, pronouns: "they" },
         pageCount: 482,
-        genre: "scifi"
+        genre: "sciFi"
       };
       var dune = {
         title: "Dune",
         mainCharacter: { name: "Paul", age: 15, pronouns: "he/him" },
         pageCount: 421,
-        genre: "scifi"
+        genre: "sciFi"
       };
-      var scifiShelf = [dune, hyperion];
+      var sciFiShelf = [dune, hyperion];
 
-      assert.equal(searchShelf(scifiShelf, "Hyperion"), true);
-      assert.equal(searchShelf(scifiShelf, "The Fifth Season"), false);
+      assert.equal(searchShelf(sciFiShelf, "Hyperion"), true);
+      assert.equal(searchShelf(sciFiShelf, "The Fifth Season"), false);
     });
   });
 });
