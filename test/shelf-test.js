@@ -6,11 +6,11 @@ var searchShelf = require("../src/shelf.js").searchShelf;
 
 describe("shelf.js", function() {
   describe("shelfBook", function() {
-    it.skip("should be a function", function() {
+    it("should be a function", function() {
       assert.isFunction(shelfBook);
     });
-  
-    it.skip("should add books to a specific shelf", function() {
+
+    it("should add books to a specific shelf", function() {
       var hyperion = {
         title: "Hyperion",
         mainCharacter: { name: "The Shrike", age: null, pronouns: "they" },
@@ -23,6 +23,18 @@ describe("shelf.js", function() {
         pageCount: 421,
         genre: "sciFi"
       };
+
+      var scifiShelf = [];
+
+      shelfBook(hyperion, scifiShelf);
+      shelfBook(dune, scifiShelf);
+
+      assert.equal(scifiShelf[0], dune);
+      assert.equal(scifiShelf[1], hyperion);
+    });
+
+    it('should add another book to the shelf', function() {
+
       var sciFiShelf = [];
   
       shelfBook(hyperion, sciFiShelf);
@@ -33,6 +45,7 @@ describe("shelf.js", function() {
     });
   
     it.skip("should add another book to the shelf", function() {
+
       var hyperion = {
         title: "Hyperion",
         mainCharacter: { name: "The Shrike", age: null, pronouns: "they" },
@@ -51,6 +64,16 @@ describe("shelf.js", function() {
         pageCount: 324,
         genre: "sciFi"
       };
+
+      var scifiShelf = [hyperion];
+
+      shelfBook(endersgame, scifiShelf);
+      shelfBook(dune, scifiShelf);
+
+      assert.equal(scifiShelf[0], dune);
+      assert.equal(scifiShelf[1], endersgame);
+      assert.equal(scifiShelf[2], hyperion);
+
       var sciFiShelf = [hyperion];
   
       shelfBook(endersGame, sciFiShelf);
@@ -59,9 +82,10 @@ describe("shelf.js", function() {
       assert.equal(sciFiShelf[0], dune);
       assert.equal(sciFiShelf[1], endersGame);
       assert.equal(sciFiShelf[2], hyperion);
+
     });
 
-    it.skip("shelves can only hold a certain amount of books", function () {
+    it("shelves can only hold a certain amount of books", function () {
       var hyperion = {
         title: "Hyperion",
         mainCharacter: { name: "The Shrike", age: null, pronouns: "they" },
@@ -101,11 +125,19 @@ describe("shelf.js", function() {
   });
 
   describe("unshelfBook", function() {
+
+    it('should be a function', function() {
+      assert.isFunction(unshelfBook);
+    });
+
+    it('should remove a book by name', function() {
+
     it.skip("should be a function", function() {
       assert.isFunction(unshelfBook);
     });
   
     it.skip("should remove a book by name", function() {
+
       var hyperion = {
         title: "Hyperion",
         mainCharacter: { name: "The Shrike", age: null, pronouns: "they" },
@@ -124,21 +156,30 @@ describe("shelf.js", function() {
         pageCount: 324,
         genre: "sciFi"
       };
+
+      var scifiShelf = [hyperion, dune, endersgame];
+
+      unshelfBook("Dune", scifiShelf);
+
+      assert.equal(scifiShelf.length, 2);
+      assert.deepEqual(scifiShelf, [hyperion, endersgame]);
+
       var sciFiShelf = [hyperion, dune, endersGame];
   
       unshelfBook("Dune", sciFiShelf);
       
       assert.equal(sciFiShelf.length, 2);
       assert.deepEqual(sciFiShelf, [hyperion, endersGame]);
+
     });
   });
 
   describe("listTitles", function () {
-    it.skip("should be a function", function () {
+    it("should be a function", function () {
       assert.isFunction(listTitles);
     });
 
-    it.skip("should create a list of all the titles on a shelf", function () {
+    it("should create a list of all the titles on a shelf", function () {
       var hyperion = {
         title: "Hyperion",
         mainCharacter: { name: "The Shrike", age: null, pronouns: "they" },
@@ -166,7 +207,7 @@ describe("shelf.js", function() {
   });
 
   describe("searchShelf", function() {
-    it.skip("should tell us if a title is on the shelf", function() {
+    it("should tell us if a title is on the shelf", function() {
       var hyperion = {
         title: "Hyperion",
         mainCharacter: { name: "The Shrike", age: null, pronouns: "they" },
